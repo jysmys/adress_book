@@ -1,0 +1,12 @@
+{
+  "name": "address_book_challenge",
+  "version": "1.0.0",
+  "description": "Adress book application",
+  "main": "src/app.js",
+  "repository": "https://github.com/jysmys/adress_book.git",
+  "author": "japh <jenny@scherr.se>",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^4.2.0"
+  }
+}
