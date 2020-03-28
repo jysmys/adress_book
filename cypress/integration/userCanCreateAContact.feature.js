@@ -7,14 +7,14 @@ describe('user can create a contact', () => {
 		cy.get('#company').type('Performance IT')
 		cy.get('#notes').type('Performance Engineer')
 		cy.get('#twitter').type('@jennyscherr')
-        // cy.get('#add-contact').click()
         cy.get('#submit').click()
+        cy.get('#contact-list')
     })
     it('displays a name of the new contact', () => {
-		cy.get('#body').should('contain', 'Jenny')
+		cy.get('#contact-list').should('contain', 'Jenny')
 	})
 	
 	it('displays the phone number of the new contact', () => {
-		cy.get('#body').should('contain', '0767 687974')
+		cy.get('#contact-list').should('contain', '0767 687974')
 	})
 })

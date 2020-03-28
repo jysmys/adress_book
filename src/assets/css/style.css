@@ -77,7 +77,7 @@ th {
     padding-top: 10px;
 }
 
-.getForm {
+#new-contact-form {
     line-height: 1.5;
     color: #212529;
     text-align: left;

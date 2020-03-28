@@ -14,7 +14,7 @@
             <h1>Adress book</h1>
         </header>
         
-        <table id="tabels">
+        <!-- <table id="tabels">
             <tr id=thead>
                 <th>Contacts</th>
                 <th></th>
@@ -39,24 +39,24 @@
                     <td><p></p></td>
                     <td><p></p></td>
                 </tr>
-        </table>
-        <form class="getForm">
+        </table> -->
+        <form id="new-contact-form">
             <h3>Add contact</h3>
             <label for="name">Name</label>
-            <input id="name" type="text"><br>
+            <input id="name" name="name" type="text"><br>
             <label for="email"> Email</label>
-            <input id="email" type="text"><br>
+            <input id="email" name="email" type="text"><br>
             <label for="phone">Phone</label>
-            <input id="phone" type="text"><br>
+            <input id="phone" name="phone" type="text"><br>
             <label for="company">Company</label>
-            <input id="company" type="text"><br>
+            <input id="company" name="company" type="text"><br>
             <label for="notes">Notes</label><br>
             <textarea id="notes" name="notes" type="text"></textarea><br>
             <label for="twitter">Twitter</label>
-            <input id="twitter" type="text"><br>
+            <input id="twitter" name="twitter" type="text"><br>
             <!-- <input id="submit" type="submit" value="Save contact">   -->
-            <button id="submit">Save Contact</button>
         </form>
+        <button id="submit">Save Contact</button>
         <div id="contact-list"></div>
         <script src="./assets/js/app.js"></script>
 </div>
