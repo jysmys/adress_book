@@ -13,6 +13,7 @@
         <header>
             <h1>Adress book</h1>
         </header>
+        
         <table id="tabels">
             <tr id=thead>
                 <th>Contacts</th>
@@ -21,22 +22,22 @@
                 <th></th>
             </tr>
             <tr id="head">
-                <th>First name</th>
-                <th>Second name</th>
-                <th>Phone</th>
+                <th>Name</th>
                 <th>Email</th>
+                <th>Phone</th>
+                <th>Company</th>
             </tr>
                 <tr id= body>
-                <td><p>Jenny</p></td>
-                <td><p>Scherr</p></td>
-                <td><p>0767 687974</p></td>
+                <td><p>Jenny Scherr</p></td>
                 <td><p>jenny@scherr.se</p></td>
+                <td><p>0767 687974</p></td>
+                <td><p>Performance IT</p></td>
                 </tr>
                 <tr id= body>
-                    <td><p>Jenny</p></td>
-                    <td><p>Scherr</p></td>
-                    <td><p>0767 687974</p></td>
-                    <td><p>jenny@scherr.se</p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
                 </tr>
         </table>
         <form class="getForm">
@@ -53,9 +54,11 @@
             <textarea id="notes" name="notes" type="text"></textarea><br>
             <label for="twitter">Twitter</label>
             <input id="twitter" type="text"><br>
-            <button id="add-contact">Add Contact</button>
+            <!-- <input id="submit" type="submit" value="Save contact">   -->
+            <button id="submit">Save Contact</button>
         </form>
-        <script></script>
+        <div id="contact-list"></div>
+        <script src="./assets/js/app.js"></script>
 </div>
 </body>
 </html>
