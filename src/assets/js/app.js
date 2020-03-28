@@ -1,47 +1,39 @@
-// const getInputvalue = () => {
-//     let getName = document.getElementById("name").value
-//     let getEmail = document.getElementById("email").value
-//     let getPhone = document.getElementById("phone").value
-//     let getCompany = document.getElementById("company").value
-//     let getNotes = document.getElementById("notes").value
-//     let getTwitter = document.getElementById("twitter").value
-// }
-
 const  storage = window.localStorage
 
 const  renderContacts = () => {
   const  contacts = JSON.parse(storage.getItem('contacts'))
 
-  let  div = document.querySelector('#contact-list')
+  let table = document.querySelector('#contact-list')
   if (contacts) {
-	div.innerHTML = ''
-	const  ul = document.createElement('ul')
-
+	table.innerHTML = ''
+	// document.createElement('table')
+    
 	contacts.forEach(contact  => {
-		let  li = document.createElement('li')
+        let  tr = document.createElement('tr')
+		// let  td = document.createElement('td')
 
-		li.innerHTML = `
-		  <span>${contact.name}</span> |
-		  <span>${contact.email}</span> |
-		  <span>${contact.phone}</span>
+		tr.innerHTML = `
+		  <td><p>${contact.name}</p></td>
+		  <td><p>${contact.email}</p></td>
+		  <td><p>${contact.phone}</p></td>
+		  <td><p>${contact.company}</p></td>
+		  <td><p>${contact.notes}</p></td>
 	    `
-	    ul.appendChild(li)
+	    table.appendChild(tr)
 	  })
 			
-	  div.appendChild(ul)
+	//   table.appendChild(tr)
 	} else {
-	  div.innerHTML = '<p>You have no contacts in your address book</p>'
+        table.innerHTML = '<p>You have no contacts in your address book</p>'
 	}
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	renderContacts()
+    renderContacts()
     const  contactForm = document.getElementById('new-contact-form')
 	const buttonClick = document.getElementById('submit')
 	buttonClick.addEventListener('click', event  => {
         event.preventDefault()
-        var x = document.getElementById("new-contact-form").elements.namedItem("name").value
-        console.log(x)
 
 		// 1. Read all the input fields and get their values
 		const { name, email, phone, company, notes, twitter } = contactForm.elements
