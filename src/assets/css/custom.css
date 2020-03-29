@@ -1,5 +1,7 @@
 body {
     background-color: rgb(243, 243, 243);
+    font-family: 'Ubuntu', sans-serif !important;
+    font-size: 0.9rem !important;
 }
 .content {
     font-family: 'Ubuntu', sans-serif;
@@ -8,26 +10,27 @@ body {
     margin-right: auto;
     width: 70%;
     text-align: left;
-    font-size: 1rem;
     font-weight: 400;
+    padding-bottom: 50px;
 }
 header {
     width: 100%;
     padding-top: 30px;
     padding-bottom: 30px;
+    padding-left: 15px;
 }
 
 h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 800;
 }
 h3 {
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 600;
 }
 p {
     font-family: 'Muli', sans-serif;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 300;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -37,7 +40,7 @@ p {
 }
 label {
     font-family: 'Muli', sans-serif;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 400;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -48,33 +51,43 @@ label {
 }
 
 table {
-    line-height: 1.5;
+    line-height: 1.5rem;
     color: #212529;
     text-align: left;
     position: relative;
-    padding: 3.5rem;
     border-collapse: collapse;
     background-color: white;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 4rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+}
+tr#thead {
+    border-bottom: 0px;
+    height: 2rem;
+}
+tr#tend  {
+    border-bottom: 0px;
+    height: 2rem;
 }
 tr#head {
     border-bottom: 3px solid rgb(214, 214, 214);
 }
-tr#thead {
-    border-bottom: 0px;
+td {
+    padding-left: 5px;
 }
 tr {
     border-bottom: 2px solid rgb(214, 214, 214);
+    line-height: 1.5rem;
 }
 
 table tr#body:hover {
     background-color: rgb(187, 187, 187);
 }
 th {
-    padding-left: 5px;
-    padding-bottom: 5px;
-    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 1.1rem;
+    padding-top: 20px;
 }
 
 #new-contact-form {
@@ -85,7 +98,7 @@ th {
     position: relative;
     border: solid #f8f9fa;
     padding: 1.5rem;
-    margin-top: 50px;
+    border-radius: 1rem;
     margin-right: 0;
     margin-left: 0;
     border-width: .2rem;
@@ -104,7 +117,7 @@ input, textarea {
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
-    border-radius: .25rem;
+    border-radius: .3rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 input:focus:valid {
@@ -119,12 +132,12 @@ button {
     text-transform: none;
     display: inline-block;
     font-weight: 400;
+    font-size: 1.1rem;
     text-align: center;
     vertical-align: middle;
     user-select: none;
     border: 1px solid transparent;
     padding: .375rem .75rem;
-    font-size: 1rem;
     line-height: 1.5;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
