@@ -21,16 +21,16 @@ header {
 }
 
 h1 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 800;
 }
 h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 600;
 }
 p {
     font-family: 'Muli', sans-serif;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 300;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -40,7 +40,7 @@ p {
 }
 label {
     font-family: 'Muli', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 400;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -59,7 +59,7 @@ table {
     background-color: white;
     width: 100%;
     margin-top: 4rem;
-    font-size: 1rem;
+    /* font-size: 1.2rem; */
     border-radius: 1rem;
 }
 tr#thead {
@@ -86,8 +86,8 @@ table tr#body:hover {
     background-color: rgb(187, 187, 187);
 }
 th {
+    font-size: 1.3rem;
     padding-left: 10px;
-    font-size: 1.1rem;
     padding-top: 20px;
 }
 i {
@@ -111,7 +111,7 @@ svg {
     background-color: white;
 }
 input, textarea {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     box-sizing: border-box;
     font-family: inherit;
     overflow: visible;
