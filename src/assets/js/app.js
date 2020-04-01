@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	toggleFormVisibilityButton.addEventListener('click', () => {
         if (contactForm.style.display === '') {
             contactForm.style.display = 'none'
+            document.getElementById("add-contact").disabled = false;
 		} else {
             contactForm.style.display = ''
             document.getElementById("add-contact").disabled = true;
@@ -89,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     buttonClick.addEventListener('click', event  => {
         event.preventDefault()
         contactForm.style.display = 'none'
+        document.getElementById("add-contact").disabled = false;
         const existingId = document.getElementById('id').value
         
         if (parseInt(existingId) >= 1) {
@@ -144,12 +146,12 @@ const removeItem = (i, ids) => {
     const newContacts = contacts.filter(item => parseInt(item.id) !== ids)
     saveContacts(newContacts)
 }
+
 const editItem = (i, ids) => {
+    document.getElementById('new-contact-form').style.display = ''
     const  contacts = JSON.parse(storage.getItem('contacts'))
-    console.log("ids: " + ids)
         
     contacts.forEach(items => {
-        console.log("items.id: " + items.id)
         if (items.id == ids) {
             const objIndex = contacts.findIndex((obj => obj.id == ids))
             document.getElementById("hiddenIndex").value = objIndex
@@ -159,7 +161,6 @@ const editItem = (i, ids) => {
             document.getElementById("company").value = contacts[objIndex].company
             document.getElementById("notes").value = contacts[objIndex].notes
             document.getElementById("id").value = contacts[objIndex].id
-            console.log("objIndex: " + objIndex)
         }
     })
 }
