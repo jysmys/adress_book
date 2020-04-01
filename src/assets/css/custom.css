@@ -130,6 +130,14 @@ input:focus:valid {
     border: 2px solid #a3a7ac;
     outline: none;
 }
+textarea:focus:valid {
+    border: 2px solid #a3a7ac;
+    outline: none;
+}
+button:focus:valid {
+    border: 2px solid #548cd1;
+    outline: none;
+}
 button {
     box-sizing: border-box;
     margin: 0;
@@ -148,7 +156,38 @@ button {
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     color: #fff;
-    background-color: #2890ff;
-    border-color: #007bff;
+    background-color: #647d97;
+    border-color: #305174;
     cursor: pointer;
+}
+button#add-contact {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: inherit;
+    overflow: visible;
+    text-transform: none;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 1.1rem;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    color: #fff;
+    background-color: #647d97;
+    border-color: #305174;
+    cursor: pointer;
+}
+#addC {
+    padding-bottom: 2rem;
+    padding-left: 1.5rem;
+}
+#add-contact:disabled,
+button[disabled] {
+    background-color: rgb(213, 219, 238);
+    border-color: #d0dbe7;
 }

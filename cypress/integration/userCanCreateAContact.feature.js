@@ -1,5 +1,5 @@
 describe('user can create a contact', () => {
-	it('test', () => {
+    beforeEach('test', () => {
         cy.visit('http://localhost:3001')
 		cy.get('#name').type('Jenny')
 		cy.get('#email').type('jenny@scherr.se')
@@ -19,8 +19,4 @@ describe('user can create a contact', () => {
     //     cy.get('#trash').click()
     //     cy.get('#body').should('not.exist')
 	// })
-    it('remove a contact', () => {
-        cy.get('#trash').click()
-        cy.get('#body').should('not.exist')
-	})
 })

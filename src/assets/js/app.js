@@ -63,29 +63,6 @@ const renderContacts = () => {
     }
     tableEnd(table)
 }
-const getInputValues = (i, contactForm) => {
-    const { name, email, phone, company, notes, twitter,  id, hiddenIndex} = contactForm.elements
-    console.log(hiddenIndex.value)
-
-    if (hiddenIndex.value === "") {
-        hiddenIndex.value = parseInt(i)
-        id.value = parseInt(i) + 1
-    }
-    else {
-        id.value = parseInt(id.value) + 1
-    }
-    const contact = {
-        name:  name.value,
-        email:  email.value,
-        phone:  phone.value,
-        company:  company.value,
-        notes:  notes.value,
-        twitter:  twitter.value,
-        id: id.value
-    }
-    console.log(contact)
-    return contact
-}
 const saveContacts = contacts => {
     storage.setItem('contacts', JSON.stringify(contacts))
     renderContacts()
@@ -94,21 +71,33 @@ const saveContacts = contacts => {
 document.addEventListener('DOMContentLoaded', () => {
     renderContacts()
     const  contactForm = document.getElementById('new-contact-form')
-	const buttonClick = document.getElementById('submit')
-    let  contacts = JSON.parse(storage.getItem('contacts')) || []
     
+    const  toggleFormVisibilityButton = document.getElementById('add-contact')
+	contactForm.style.display = 'none'
+    
+	toggleFormVisibilityButton.addEventListener('click', () => {
+        if (contactForm.style.display === '') {
+            contactForm.style.display = 'none'
+		} else {
+            contactForm.style.display = ''
+            document.getElementById("add-contact").disabled = true;
+		}
+    })
+    
+    const buttonClick = document.getElementById('submit')
+    let  contacts = JSON.parse(storage.getItem('contacts')) || []
     buttonClick.addEventListener('click', event  => {
         event.preventDefault()
+        contactForm.style.display = 'none'
         const existingId = document.getElementById('id').value
         
         if (parseInt(existingId) >= 1) {
-            const i = contacts.length
             const { name, email, phone, company, notes, twitter,  id, hiddenIndex} = contactForm.elements
 
             const index = document.getElementById('hiddenIndex').value
             const ixd = parseInt(index)
 
-            contacts[ixd].name = document.getElementById("name").value,
+            contacts[ixd].name = name.value,
             contacts[ixd].email = email.value,
             contacts[ixd].phone = phone.value,
             contacts[ixd].company = company.value,
