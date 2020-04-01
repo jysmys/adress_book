@@ -11,9 +11,14 @@ describe('create a contact', () => {
         cy.get('#submit').click()
         cy.get('#contact-list')
     })
-    it('delete a contact', () => {
+    it('edit a new contact', () => {
         cy.wait(3000)
-        cy.get('#trash').click()
-        cy.contains('jenny@scherr.se').should('not.exist')
+        cy.get('#edit').click()
+        cy.get('#notes')
+        .clear()
+        .type('Full stack developer ')
+        cy.get('#submit').click()
+        cy.get('#contact-list')
+        .should('contain', 'Full stack developer')
     })
 })
