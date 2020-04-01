@@ -15,8 +15,4 @@ describe('user can create a contact', () => {
         .should('contain', 'Jenny')
 		.should('contain', '0767 687974')
 	})
-    // it('remove a contact', () => {
-    //     cy.get('#trash').click()
-    //     cy.get('#body').should('not.exist')
-	// })
 })

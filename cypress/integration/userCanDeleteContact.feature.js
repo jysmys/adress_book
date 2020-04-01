@@ -1,0 +1,16 @@
+describe ('User can delete a contact', () => {
+    it('by clicking the delete button', () => {
+        cy.visit('http://localhost:3001')
+        cy.get('#add-contact').click()
+        cy.get('#name').type('Noel')
+        cy.get('#email').type('noel@mail.com')
+        cy.get('#phone').type('070 1234567')
+        cy.get('#company').type('Craf Academy')
+        cy.get('#notes').type('Working Hard')
+        cy.get('#twitter').type('@Noelryn')
+        cy.get('#submit').click()
+        cy.wait(3000)
+        cy.get('#trash').click()
+        cy.contains('noel@mail.com').should('not.exist')
+    })
+})
