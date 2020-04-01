@@ -10,11 +10,17 @@ describe('user can create a contact', () => {
         cy.get('#submit').click()
         cy.get('#contact-list')
     })
-    it('displays a name of the new contact', () => {
-		cy.get('#contact-list').should('contain', 'Jenny')
+    it('displays a new contact', () => {
+        cy.get('#contact-list')
+        .should('contain', 'Jenny')
+		.should('contain', '0767 687974')
 	})
-	
-	it('displays the phone number of the new contact', () => {
-		cy.get('#contact-list').should('contain', '0767 687974')
+    // it('remove a contact', () => {
+    //     cy.get('#trash').click()
+    //     cy.get('#body').should('not.exist')
+	// })
+    it('remove a contact', () => {
+        cy.get('#trash').click()
+        cy.get('#body').should('not.exist')
 	})
 })

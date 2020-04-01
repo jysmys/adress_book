@@ -19,7 +19,9 @@ const tableHeader = table => {
     <th>Phone</th>
     <th>Company</th>
     <th>Notes</th>
-    <th></th>`
+    <th></th>
+    <th></th>
+    `
     table.appendChild(head)
 }
 const tableEnd = table => {
@@ -28,19 +30,16 @@ const tableEnd = table => {
     tend.innerHTML = `<td></td><td></td><td></td><td></td><td></td>`
     table.appendChild(tend)
 }
-// const isEmpty = contact =>{
-//     return contact.every((k,v) => v === "")
-//   }
 
-const  renderContacts = () => {
-  const  contacts = JSON.parse(storage.getItem('contacts'))
+const renderContacts = () => {
+  const contacts = JSON.parse(storage.getItem('contacts'))
   let table = document.querySelector('#contact-list')
   table.innerHTML = ''
   tableHeader(table)
 
   if (contacts) {
-	contacts.forEach(contact  => {
-        let  tr = document.createElement('tr')
+	contacts.forEach(contact => {
+        let tr = document.createElement('tr')
         tr.setAttribute('id', 'body')
         tr.setAttribute('name', `${contact.id}`)
 
@@ -50,7 +49,11 @@ const  renderContacts = () => {
         <td><p>${contact.phone}</p></td>
         <td><p>${contact.company}</p></td>
         <td><p>${contact.notes}</p></td>
-        <td><p><a onClick="removeItem(this,${contact.id})"><i class="glyphicon glyphicon-trash"></i></></p></td>
+        <td><p><a id="edit" onClick="editItem(this,${contact.id})"><svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"/>
+        <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 00.5.5H4v.5a.5.5 0 00.5.5H5v.5a.5.5 0 00.5.5H6v-1.5a.5.5 0 00-.5-.5H5v-.5a.5.5 0 00-.5-.5H3z" clip-rule="evenodd"/>
+      </svg></a></p></td>
+        <td><p><a id="trash" onClick="removeItem(this,${contact.id})"><i class="glyphicon glyphicon-trash"></i></></p></td>
         `
         table.appendChild(tr)
         }
@@ -60,40 +63,114 @@ const  renderContacts = () => {
     }
     tableEnd(table)
 }
+const getInputValues = (i, contactForm) => {
+    const { name, email, phone, company, notes, twitter,  id, hiddenIndex} = contactForm.elements
+    console.log(hiddenIndex.value)
+
+    if (hiddenIndex.value === "") {
+        hiddenIndex.value = parseInt(i)
+        id.value = parseInt(i) + 1
+    }
+    else {
+        id.value = parseInt(id.value) + 1
+    }
+    const contact = {
+        name:  name.value,
+        email:  email.value,
+        phone:  phone.value,
+        company:  company.value,
+        notes:  notes.value,
+        twitter:  twitter.value,
+        id: id.value
+    }
+    console.log(contact)
+    return contact
+}
+const saveContacts = contacts => {
+    storage.setItem('contacts', JSON.stringify(contacts))
+    renderContacts()
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     renderContacts()
     const  contactForm = document.getElementById('new-contact-form')
 	const buttonClick = document.getElementById('submit')
-	buttonClick.addEventListener('click', event  => {
+    let  contacts = JSON.parse(storage.getItem('contacts')) || []
+    
+    buttonClick.addEventListener('click', event  => {
         event.preventDefault()
-        let  contacts = JSON.parse(storage.getItem('contacts')) || []
-        let i = contacts.length + 1
+        const existingId = document.getElementById('id').value
+        
+        if (parseInt(existingId) >= 1) {
+            const i = contacts.length
+            const { name, email, phone, company, notes, twitter,  id, hiddenIndex} = contactForm.elements
 
-		// 1. Read all the input fields and get their values
-		const { name, email, phone, company, notes, twitter } = contactForm.elements
-		const  contact = {
-            id : i,
-            name:  name.value,
-			email:  email.value,
-			phone:  phone.value,
-			company:  company.value,
-			notes:  notes.value,
-			twitter:  twitter.value,
-		}
-		console.log(contact)
-		contacts.push(contact)
+            const index = document.getElementById('hiddenIndex').value
+            const ixd = parseInt(index)
 
-		// 2. Save them to our storage
-		storage.setItem('contacts', JSON.stringify(contacts))
-		renderContacts()
-		contactForm.reset()
+            contacts[ixd].name = document.getElementById("name").value,
+            contacts[ixd].email = email.value,
+            contacts[ixd].phone = phone.value,
+            contacts[ixd].company = company.value,
+            contacts[ixd].notes = notes.value,
+            contacts[ixd].twitter = twitter.value,
+            contacts[ixd].id = id.value
+
+        storage.setItem('contacts', JSON.stringify(contacts))
+        renderContacts()
+        }
+        else {
+            const i = contacts.length
+            const { name, email, phone, company, notes, twitter,  id, hiddenIndex} = contactForm.elements
+        
+            if (hiddenIndex.value === "") {
+                hiddenIndex.value = parseInt(i)
+                id.value = parseInt(i) + 1
+            }
+            else {
+                id.value = parseInt(id.value) + 1
+            }
+            const contact = {
+                name:  name.value,
+                email:  email.value,
+                phone:  phone.value,
+                company:  company.value,
+                notes:  notes.value,
+                twitter:  twitter.value,
+                id: id.value
+            }
+            console.log(contact)
+            contacts.push(contact)
+            storage.setItem('contacts', JSON.stringify(contacts))
+            renderContacts()
+        //     // contacts.push(getInputValues(contacts.length, contactForm))
+        }
+        contactForm.reset()
    })
+
 })
 
 const removeItem = (i, ids) => {
     const  contacts = JSON.parse(storage.getItem('contacts'))
-    const newContacts = contacts.filter((item) => item.id !== ids)
-    storage.setItem('contacts', JSON.stringify(newContacts))
-    renderContacts()
+    const newContacts = contacts.filter(item => parseInt(item.id) !== ids)
+    saveContacts(newContacts)
+}
+const editItem = (i, ids) => {
+    const  contacts = JSON.parse(storage.getItem('contacts'))
+    console.log("ids: " + ids)
+        
+    contacts.forEach(items => {
+        console.log("items.id: " + items.id)
+        if (items.id == ids) {
+            const objIndex = contacts.findIndex((obj => obj.id == ids))
+            document.getElementById("hiddenIndex").value = objIndex
+            document.getElementById("name").value = contacts[objIndex].name
+            document.getElementById("email").value = contacts[objIndex].email
+            document.getElementById("phone").value = contacts[objIndex].phone
+            document.getElementById("company").value = contacts[objIndex].company
+            document.getElementById("notes").value = contacts[objIndex].notes
+            document.getElementById("id").value = contacts[objIndex].id
+            console.log("objIndex: " + objIndex)
+        }
+    })
 }

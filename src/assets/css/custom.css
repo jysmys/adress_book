@@ -34,7 +34,7 @@ p {
     font-weight: 300;
     margin-top: 0px;
     margin-bottom: 0px;
-    padding-left: 5px;
+    padding-left: 0px;
     padding-bottom: 5px;
     padding-top: 10px;
 }
@@ -72,6 +72,7 @@ tr#tend  {
 }
 tr#head {
     border-bottom: 3px solid rgb(214, 214, 214);
+    padding-bottom: 5px;
 }
 td {
     padding-left: 5px;
@@ -89,7 +90,12 @@ th {
     font-size: 1.1rem;
     padding-top: 20px;
 }
-
+i {
+    color: #5e6164 ;
+}
+svg {
+    color: #5e6164 ;
+}
 #new-contact-form {
     line-height: 1.5;
     color: #212529;
