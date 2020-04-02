@@ -135,7 +135,7 @@ textarea:focus:valid {
     outline: none;
 }
 button:focus:valid {
-    border: 2px solid #548cd1;
+    background-color: #5c86b3;
     outline: none;
 }
 button {
