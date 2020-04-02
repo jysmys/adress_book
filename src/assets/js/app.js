@@ -146,7 +146,6 @@ const editItem = (i, ids) => {
     contacts.forEach(items => {
         if (items.id == ids) {
             const objIndex = contacts.findIndex((obj => obj.id == ids))
-            // document.getElementById("hiddenIndex").value = objIndex
             document.getElementById("name").value = contacts[objIndex].name
             document.getElementById("email").value = contacts[objIndex].email
             document.getElementById("phone").value = contacts[objIndex].phone
