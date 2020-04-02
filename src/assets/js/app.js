@@ -94,9 +94,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const existingId = document.getElementById('id').value
         
         if (parseInt(existingId) >= 1) {
-            const { name, email, phone, company, notes, twitter,  id, hiddenIndex} = contactForm.elements
+            const { name, email, phone, company, notes, twitter,  id} = contactForm.elements
 
-            const index = document.getElementById('hiddenIndex').value
+            const index = document.getElementById('id').value
             const ixd = parseInt(index)
 
             contacts[ixd].name = name.value,
@@ -111,16 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
         renderContacts()
         }
         else {
+            const { name, email, phone, company, notes, twitter} = contactForm.elements
             const i = contacts.length
-            const { name, email, phone, company, notes, twitter,  id, hiddenIndex} = contactForm.elements
-        
-            if (hiddenIndex.value === "") {
-                hiddenIndex.value = parseInt(i)
-                id.value = parseInt(i) + 1
-            }
-            else {
-                id.value = parseInt(id.value) + 1
-            }
+
             const contact = {
                 name:  name.value,
                 email:  email.value,
@@ -128,13 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 company:  company.value,
                 notes:  notes.value,
                 twitter:  twitter.value,
-                id: id.value
+                id: i
             }
             console.log(contact)
             contacts.push(contact)
             storage.setItem('contacts', JSON.stringify(contacts))
             renderContacts()
-        //     // contacts.push(getInputValues(contacts.length, contactForm))
         }
         contactForm.reset()
    })
@@ -154,7 +146,7 @@ const editItem = (i, ids) => {
     contacts.forEach(items => {
         if (items.id == ids) {
             const objIndex = contacts.findIndex((obj => obj.id == ids))
-            document.getElementById("hiddenIndex").value = objIndex
+            // document.getElementById("hiddenIndex").value = objIndex
             document.getElementById("name").value = contacts[objIndex].name
             document.getElementById("email").value = contacts[objIndex].email
             document.getElementById("phone").value = contacts[objIndex].phone
